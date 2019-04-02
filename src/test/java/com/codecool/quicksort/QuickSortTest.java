@@ -18,14 +18,55 @@ class QuickSortTest {
     }
 
     @Test
+    void sortingWithNullThrowsError() {
+        QuickSort quickSort = new QuickSort();
+
+        List<Integer> toSort = Arrays.asList(5, null, 1, 12, 9);
+        assertThrows(NullPointerException.class, ()-> quickSort.sort(toSort));
+    }
+
+    @Test
+    void sortingAlreadySortedItemsWorks() {
+        QuickSort quickSort = new QuickSort();
+
+        List<Integer> toSort = Arrays.asList(1, 3, 5, 9, 12);
+        quickSort.sort(toSort);
+
+        List<Integer> expected = Arrays.asList(1, 3, 5, 9, 12);
+        assertIterableEquals(expected, toSort);
+    }
+
+    @Test
     void sortingSimpleItemsWorks() {
         QuickSort quickSort = new QuickSort();
 
         List<Integer> toSort = Arrays.asList(5, 3, 1, 12, 9);
         quickSort.sort(toSort);
-        System.out.println(toSort);
 
         List<Integer> expected = Arrays.asList(1, 3, 5, 9, 12);
+        assertIterableEquals(expected, toSort);
+
+        List<Integer> toSort1 = Arrays.asList(5, 3, 1, 12, 9, 110, 2, 45, 78, 56, 42);
+        quickSort.sort(toSort1);
+
+        List<Integer> expected1 = Arrays.asList(1, 2, 3, 5, 9, 12, 42, 45, 56, 78, 110);
+        assertIterableEquals(expected1, toSort1);
+
+        List<Integer> toSort2 = Arrays.asList(3, 2, 1);
+        quickSort.sort(toSort2);
+
+        List<Integer> expected2 = Arrays.asList(1, 2, 3);
+        assertIterableEquals(expected2, toSort2);
+    }
+
+    @Test
+    void sortingNegativeItemsWorks() {
+        QuickSort quickSort = new QuickSort();
+
+        List<Integer> toSort = Arrays.asList(5, -3, 1, 12, 9);
+        quickSort.sort(toSort);
+
+        List<Integer> expected = Arrays.asList(-3, 1, 5, 9, 12);
         assertIterableEquals(expected, toSort);
     }
 

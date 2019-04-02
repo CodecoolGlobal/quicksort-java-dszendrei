@@ -1,6 +1,5 @@
 package com.codecool.quicksort;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class QuickSort {
@@ -8,7 +7,7 @@ public class QuickSort {
     /**
      * Sorts the given List in place
      *
-     * @param toSort the List to sort. Throws an error if its null
+     * @param toSort the List to sort. Throws an error if its null, or contains null
      */
     public void sort(List<Integer> toSort) {
         System.out.println("Initial list: "+toSort);
@@ -18,11 +17,10 @@ public class QuickSort {
         for (int i = 0; i < toSort.size(); i++) {
             toSort.set(i,tempList.get(i));
         }
-        System.out.println("Sorted list: "+toSort);
+        System.out.println("Sorted list: "+toSort+"\n");
     }
 
     private List<Integer> recursiveSorting(List<Integer> toSort, int leftIndex, int rightIndex) {
-        System.out.println(toSort);
         if (rightIndex-leftIndex<1) return toSort;
         int pivotIndex = (leftIndex+rightIndex)/2;
         Integer pivot = toSort.get(pivotIndex);
