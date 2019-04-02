@@ -15,16 +15,20 @@ public class QuickSort {
     }
 
     private void recursiveSorting(List<Integer> toSort, int leftIndex, int rightIndex) {
+
         if (rightIndex-leftIndex<1) return;
+
         int pivotIndex = (leftIndex+rightIndex)/2;
         Integer pivot = toSort.get(pivotIndex);
         int initialLeftIndex = leftIndex;
         int initialRightIndex = rightIndex;
         Integer left;
         Integer right;
+
         while (leftIndex < rightIndex) {
             left = toSort.get(leftIndex);
             right = toSort.get(rightIndex);
+
             while (left < pivot) {
                 leftIndex++;
                 left = toSort.get(leftIndex);
