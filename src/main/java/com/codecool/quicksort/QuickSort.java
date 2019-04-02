@@ -23,67 +23,45 @@ public class QuickSort {
 
     private List<Integer> recursiveSorting(List<Integer> toSort, int leftIndex, int rightIndex) {
         System.out.println(toSort);
-        Integer left = toSort.get(leftIndex);
-        Integer right = toSort.get(rightIndex);
-        if (rightIndex-leftIndex < 2) {
-            if (toSort.get(leftIndex) > toSort.get(rightIndex)) {
-                toSort.set(leftIndex, right);
-                toSort.set(rightIndex, left);
-            }
-            return toSort;
-        }
-        int pivotIndex = leftIndex + (leftIndex+rightIndex)/2;
-        if (pivotIndex > toSort.size()-1) pivotIndex = toSort.size()-1;
+        if (rightIndex-leftIndex<1) return toSort;
+        //Integer left = toSort.get(leftIndex);
+        //Integer right = toSort.get(rightIndex);
+//        if (rightIndex-leftIndex < 2) {
+//            if (toSort.get(leftIndex) > toSort.get(rightIndex)) {
+//                toSort.set(leftIndex, right);
+//                toSort.set(rightIndex, left);
+//            }
+//            return toSort;
+//        }
+        int pivotIndex = (leftIndex+rightIndex)/2;
+        //if (pivotIndex > toSort.size()-1) pivotIndex = toSort.size()-1;
         Integer pivot = toSort.get(pivotIndex);
         int initialLeftIndex = leftIndex;
         int initialRightIndex = rightIndex;
-        mainWhileLoop:
-        while (!left.equals(right)) {
-            if (left.equals(pivot) && rightIndex > pivotIndex) {
-                System.out.println(""+1+" PIVOT INDEX: " + pivotIndex);
-                if (right < left) {
-                    toSort.set(leftIndex, right);
-                    toSort.set(rightIndex, left);
-                    pivotIndex = rightIndex;
-                }
-                break mainWhileLoop;
-            }
-            if (right.equals(pivot) && leftIndex < pivotIndex) {
-                System.out.println(""+2+" PIVOT INDEX: " + pivotIndex);
-                if (right < left) {
-                    System.out.println(""+3+" PIVOT INDEX: " + pivotIndex);
-                    toSort.set(leftIndex, right);
-                    toSort.set(rightIndex, left);
-                }
-                break mainWhileLoop;
-            }
-
-            boolean bothOk = true;
-            if((left <= pivot)) {
+        Integer left;
+        Integer right;
+        while (leftIndex < rightIndex) {
+            //leftWhile:
+            left = toSort.get(leftIndex);
+            right = toSort.get(rightIndex);
+            while (left < pivot) {
                 leftIndex++;
                 left = toSort.get(leftIndex);
-                bothOk = false;
             }
-            if((right >= pivot)) {
+
+            //rightWhile:
+            while (right > pivot) {
                 rightIndex--;
                 right = toSort.get(rightIndex);
-                bothOk = false;
             }
-            if(left.equals(right)) break mainWhileLoop;
-            if(bothOk) {
+
+            if (left > right) {
                 toSort.set(leftIndex, right);
-                toSort.set(rightIndex, left);
-                leftIndex++;
-                rightIndex--;
-                left = toSort.get(leftIndex);
-                right = toSort.get(rightIndex);
+                if (leftIndex !=  rightIndex) toSort.set(rightIndex, left);
             }
-
         }
-        recursiveSorting(toSort, initialLeftIndex, pivotIndex);
-        //if (pivotIndex == toSort.size()-1) pivotIndex -= 1;
-
-        recursiveSorting(toSort, pivotIndex+1, initialRightIndex);
+        recursiveSorting(toSort, initialLeftIndex, leftIndex);
+        recursiveSorting(toSort, leftIndex+1, initialRightIndex);
         return toSort;
     }
 }
