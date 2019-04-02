@@ -10,18 +10,12 @@ public class QuickSort {
      * @param toSort the List to sort. Throws an error if its null, or contains null
      */
     public void sort(List<Integer> toSort) {
-        System.out.println("Initial list: "+toSort);
         if (toSort == null) throw new IllegalArgumentException();
-        if (toSort.size() < 2) return;
-        List<Integer> tempList = recursiveSorting(toSort,0,toSort.size()-1);
-        for (int i = 0; i < toSort.size(); i++) {
-            toSort.set(i,tempList.get(i));
-        }
-        System.out.println("Sorted list: "+toSort+"\n");
+        recursiveSorting(toSort,0,toSort.size()-1);
     }
 
-    private List<Integer> recursiveSorting(List<Integer> toSort, int leftIndex, int rightIndex) {
-        if (rightIndex-leftIndex<1) return toSort;
+    private void recursiveSorting(List<Integer> toSort, int leftIndex, int rightIndex) {
+        if (rightIndex-leftIndex<1) return;
         int pivotIndex = (leftIndex+rightIndex)/2;
         Integer pivot = toSort.get(pivotIndex);
         int initialLeftIndex = leftIndex;
@@ -50,6 +44,5 @@ public class QuickSort {
         }
         recursiveSorting(toSort, initialLeftIndex, leftIndex);
         recursiveSorting(toSort, leftIndex+1, initialRightIndex);
-        return toSort;
     }
 }

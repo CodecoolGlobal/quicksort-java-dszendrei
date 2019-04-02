@@ -30,7 +30,9 @@ class QuickSortTest {
         QuickSort quickSort = new QuickSort();
 
         List<Integer> toSort = Arrays.asList(1, 3, 5, 9, 12);
+        System.out.println("Initial list: "+toSort);
         quickSort.sort(toSort);
+        System.out.println("Sorted list: "+toSort+"\n");
 
         List<Integer> expected = Arrays.asList(1, 3, 5, 9, 12);
         assertIterableEquals(expected, toSort);
@@ -41,19 +43,25 @@ class QuickSortTest {
         QuickSort quickSort = new QuickSort();
 
         List<Integer> toSort = Arrays.asList(5, 3, 1, 12, 9);
+        System.out.println("Initial list: "+toSort);
         quickSort.sort(toSort);
+        System.out.println("Sorted list: "+toSort+"\n");
 
         List<Integer> expected = Arrays.asList(1, 3, 5, 9, 12);
         assertIterableEquals(expected, toSort);
 
         List<Integer> toSort1 = Arrays.asList(5, 3, 1, 12, 9, 110, 2, 45, 78, 56, 42);
+        System.out.println("Initial list: "+toSort);
         quickSort.sort(toSort1);
+        System.out.println("Sorted list: "+toSort+"\n");
 
         List<Integer> expected1 = Arrays.asList(1, 2, 3, 5, 9, 12, 42, 45, 56, 78, 110);
         assertIterableEquals(expected1, toSort1);
 
         List<Integer> toSort2 = Arrays.asList(3, 2, 1);
+        System.out.println("Initial list: "+toSort);
         quickSort.sort(toSort2);
+        System.out.println("Sorted list: "+toSort+"\n");
 
         List<Integer> expected2 = Arrays.asList(1, 2, 3);
         assertIterableEquals(expected2, toSort2);
@@ -64,7 +72,9 @@ class QuickSortTest {
         QuickSort quickSort = new QuickSort();
 
         List<Integer> toSort = Arrays.asList(5, -3, 1, 12, 9);
+        System.out.println("Initial list: "+toSort);
         quickSort.sort(toSort);
+        System.out.println("Sorted list: "+toSort+"\n");
 
         List<Integer> expected = Arrays.asList(-3, 1, 5, 9, 12);
         assertIterableEquals(expected, toSort);
@@ -75,7 +85,9 @@ class QuickSortTest {
         QuickSort quickSort = new QuickSort();
 
         List<Integer> toSort = Arrays.asList(5, 3, 1, 5, 9);
+        System.out.println("Initial list: "+toSort);
         quickSort.sort(toSort);
+        System.out.println("Sorted list: "+toSort+"\n");
 
         List<Integer> expected = Arrays.asList(1, 3, 5, 5, 9);
         assertIterableEquals(expected, toSort);
