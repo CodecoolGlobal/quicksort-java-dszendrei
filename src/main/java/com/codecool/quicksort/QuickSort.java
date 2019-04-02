@@ -24,24 +24,13 @@ public class QuickSort {
     private List<Integer> recursiveSorting(List<Integer> toSort, int leftIndex, int rightIndex) {
         System.out.println(toSort);
         if (rightIndex-leftIndex<1) return toSort;
-        //Integer left = toSort.get(leftIndex);
-        //Integer right = toSort.get(rightIndex);
-//        if (rightIndex-leftIndex < 2) {
-//            if (toSort.get(leftIndex) > toSort.get(rightIndex)) {
-//                toSort.set(leftIndex, right);
-//                toSort.set(rightIndex, left);
-//            }
-//            return toSort;
-//        }
         int pivotIndex = (leftIndex+rightIndex)/2;
-        //if (pivotIndex > toSort.size()-1) pivotIndex = toSort.size()-1;
         Integer pivot = toSort.get(pivotIndex);
         int initialLeftIndex = leftIndex;
         int initialRightIndex = rightIndex;
         Integer left;
         Integer right;
         while (leftIndex < rightIndex) {
-            //leftWhile:
             left = toSort.get(leftIndex);
             right = toSort.get(rightIndex);
             while (left < pivot) {
@@ -49,11 +38,12 @@ public class QuickSort {
                 left = toSort.get(leftIndex);
             }
 
-            //rightWhile:
             while (right > pivot) {
                 rightIndex--;
                 right = toSort.get(rightIndex);
             }
+
+            if (left.equals(right)) break;
 
             if (left > right) {
                 toSort.set(leftIndex, right);

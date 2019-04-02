@@ -13,6 +13,8 @@ public class Main {
         quickSort.sort(Arrays.asList(5, 3, 1, 12, 9));
         System.out.println();
         quickSort.sort(Arrays.asList(5, 3, 1, 12, 9, 110, 2, 45, 78, 56, 42));
+        System.out.println();
+        quickSort.sort(Arrays.asList(5, 3, 1, 5, 9));
     }
 
 }
